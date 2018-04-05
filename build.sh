@@ -7,12 +7,9 @@ mkdir -p \
 	iso/casper \
 	iso/boot/isolinux
 
-wget -q http://archive.ubuntu.com/ubuntu/pool/main/d/debootstrap/debootstrap_1.0.93+nmu2_all.deb
-dpkg -i *.deb
+wget -q http://cdimage.ubuntu.com/ubuntu-base/releases/17.10/release/ubuntu-base-17.10-base-amd64.tar.gz -O base.tar.gz
+tar xf base.tar.gz -C filesystem/
 
-debootstrap bionic filesystem/ http://archive.ubuntu.com/ubuntu /usr/share/debootstrap/scripts/bionic
-
-rm -rf filesystem/dev/*
 cp /etc/resolv.conf filesystem/etc/
 
 mkdir -p \
@@ -29,15 +26,11 @@ mount -t devpts none filesystem/dev/pts || exit 1
 cp config/chroot.sh filesystem/
 chroot filesystem/ /bin/sh /chroot.sh
 
-ls filesystem/
-ls filesystem/bin
-
-exit 1
-
 rm -r filesystem/chroot.sh
 
 umount filesystem/dev
 umount filesystem/proc
+umount filesystem/dev/pts
 
 cp filesystem/vmlinuz iso/boot/linux
 cp filesystem/initrd.img iso/boot/initramfs
