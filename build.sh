@@ -22,7 +22,7 @@ mount -o bind /proc filesystem/proc || exit 1
 
 # Install the nxos-desktop to `filesystem/`
 
-PACKAGES="nxos-desktop sddm base-files casper lupin-casper linux-image-generic"
+PACKAGES="nxos-meta sddm base-files casper lupin-casper linux-image-generic"
 chroot filesystem/ sh -c "
 	export LANG=C
 	export LC_ALL=C
