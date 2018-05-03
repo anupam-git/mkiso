@@ -42,7 +42,7 @@ $(cat /etc/apt/sources.list)
 >>>>>>>>"
 
 apt-get update
-apt-get install $PACKAGES || exit 1
+apt-get install -y $PACKAGES || exit 1
 apt-get clean
 useradd -m -U -G sudo,cdrom,adm,dip,plugdev -p '' me
 echo 'me:nitrux' | chpasswd
