@@ -14,6 +14,8 @@ calamares-settings-nxos
 
 PACKAGES=$(echo $PACKAGES | tr '\n' ' ')
 
+echo ">>>> PACKAGES: $PACKAGES"
+
 apt-get update
 apt-get install -y apt-transport-https wget ca-certificates gnupg2 apt-utils
 
