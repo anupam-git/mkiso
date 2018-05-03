@@ -4,7 +4,7 @@
 
 mkdir -p filesystem
 
-wget -q http://cdimage.ubuntu.com/ubuntu-base/daily/current/bionic-base-amd64.tar.gz
+wget -q http://cdimage.ubuntu.com/ubuntu-base/releases/18.04/release/ubuntu-base-18.04-base-amd64.tar.gz
 tar xf *.tar.gz -C filesystem
 
 
