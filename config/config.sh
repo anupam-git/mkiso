@@ -14,9 +14,6 @@ calamares-settings-nxos
 
 PACKAGES=$(echo $PACKAGES | tr '\n' ' ')
 
-echo ">>>>>>>> PACKAGES: $PACKAGES
->>>>>>>>"
-
 apt-get update
 apt-get install -y apt-transport-https wget ca-certificates gnupg2 apt-utils
 
@@ -34,14 +31,8 @@ if echo b51f77c43f28b48b14a4e06479c01afba4e54c37dc6eb6ae7f51c5751929fccc nxos.ke
 fi
 rm nxos.key
 
-echo "
->>>>>>>>
-sources.list :
-
-$(cat /etc/apt/sources.list)
->>>>>>>>"
-
 apt-get update
+apt-get dist-upgrade
 apt-get install -y $PACKAGES || exit 1
 apt-get clean
 useradd -m -U -G sudo,cdrom,adm,dip,plugdev -p '' me
