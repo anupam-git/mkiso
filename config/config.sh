@@ -15,7 +15,7 @@ calamares-settings-nxos
 PACKAGES=$(echo $PACKAGES | tr '\n' ' ')
 
 apt-get update
-apt-get install -y apt-transport-https wget ca-certificates gnupg2
+apt-get install -y apt-transport-https wget ca-certificates gnupg2 apt-utils
 
 wget -q https://archive.neon.kde.org/public.key -O neon.key
 if echo ee86878b3be00f5c99da50974ee7c5141a163d0e00fccb889398f1a33e112584 neon.key | sha256sum -c; then
