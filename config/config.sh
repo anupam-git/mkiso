@@ -25,7 +25,7 @@ fi
 rm nxos.key
 
 apt-get update
-apt-get dist-upgrade
+apt-get dist-upgrade -y
 apt-get install -y $PACKAGES || exit 1
 apt-get clean
 useradd -m -U -G sudo,cdrom,adm,dip,plugdev -p '' me
