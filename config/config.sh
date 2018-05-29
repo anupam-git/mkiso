@@ -3,6 +3,12 @@
 export LANG=C
 export LC_ALL=C
 
+METAPACKAGE_PACKAGES='
+dpkg
+net-tools
+resolvconf
+'
+
 PACKAGES='
 nxos-desktop
 lupin-casper
@@ -13,6 +19,7 @@ calamares-settings-nxos
 '
 
 PACKAGES=$(echo $PACKAGES | tr '\n' ' ')
+METAPACKAGE_PACKAGES=$(echo $METAPACKAGE_PACKAGES | tr '\n' ' ')
 
 apt-get update
 apt-get install -y apt-transport-https wget ca-certificates gnupg2 apt-utils
@@ -26,7 +33,7 @@ rm nxos.key
 
 apt-get update
 apt-get dist-upgrade -y
-apt-get install -y $PACKAGES || exit 1
+apt-get install -y $PACKAGES $METAPACKAGE_PACKAGES || exit 1
 apt-get clean
 useradd -m -U -G sudo,cdrom,adm,dip,plugdev -p '' me
 echo 'me:nitrux' | chpasswd
